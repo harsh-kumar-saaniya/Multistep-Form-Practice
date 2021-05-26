@@ -26,14 +26,14 @@ function getSteps() {
     return ['Select master blaster campaign settings', 'Create an ad group', 'Create an ad'];
 }
 
-function getStepContent(stepIndex) {
+function getStepContent(stepIndex, setStep) {
     switch (stepIndex) {
         case 0:
-            return <Address />;
+            return <Address submit={setStep} />;
         case 1:
-            return <Payment />;
+            return <Payment submit={setStep} />;
         case 2:
-            return <Review />;
+            return <Review submit={setStep} />;
         default:
             return 'Unknown stepIndex';
     }
@@ -58,7 +58,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                 ))}
             </Stepper>
             {
-                getStepContent(activeStep)
+                getStepContent(activeStep, setActiveStep)
             }
         </div>
     );

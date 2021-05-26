@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-export const Payment = () => {
+export const Payment = ({ submit }) => {
     return (
         <Formik
             initialValues={{ firstName: '', lastName: '', email: '' }}
@@ -16,10 +16,7 @@ export const Payment = () => {
                 email: Yup.string().email('Invalid email address').required('Required'),
             })}
             onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
-                    setSubmitting(false);
-                }, 400);
+                submit(2)
             }}
         >
             <Form>
