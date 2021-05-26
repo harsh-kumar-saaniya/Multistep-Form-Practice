@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 export const Address = ({ submit, setFormValues, preValues }) => {
     return (
         <Formik
-            initialValues={{ area: '', city: '', email: '' }}
+            initialValues={preValues}
             validationSchema={Yup.object({
                 area: Yup.string()
                     .max(15, 'Must be 15 characters or less')

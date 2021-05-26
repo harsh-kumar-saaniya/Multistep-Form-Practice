@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 export const Payment = ({ submit, setFormValues, preValues }) => {
     return (
         <Formik
-            initialValues={{ cardName: '', cardNumber: '' }}
+            initialValues={preValues}
             validationSchema={Yup.object({
                 cardName: Yup.string()
                     .max(15, 'Must be 15 characters or less')
@@ -28,6 +28,7 @@ export const Payment = ({ submit, setFormValues, preValues }) => {
                 <Field name="cardNumber" type="text" />
                 <ErrorMessage name="cardNumber" />
 
+                <button onClick={() => submit(0)}>Back</button>
                 <button type="submit">Submit</button>
             </Form>
         </Formik>
