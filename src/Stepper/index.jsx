@@ -5,9 +5,9 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-// import { Address } from '../components/Address'
-// import { Payment } from '../components/Payment'
-// import { Review } from '../components/Review'
+import { Address } from '../Components/address';
+import { Payment } from '../Components/payment';
+import { Review } from '../Components/review';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -26,14 +26,14 @@ function getSteps() {
     return ['Select master blaster campaign settings', 'Create an ad group', 'Create an ad'];
 }
 
-function getStepContent(stepIndex, setStep) {
+function getStepContent(stepIndex) {
     switch (stepIndex) {
         case 0:
-            return  "This is case 1"
+            return <Address />;
         case 1:
-            return "This is case 2"
+            return <Payment />;
         case 2:
-            return "This is case 3"
+            return <Review />;
         default:
             return 'Unknown stepIndex';
     }
@@ -44,7 +44,7 @@ export default function HorizontalLabelPositionBelowStepper() {
     const [activeStep, setActiveStep] = React.useState(0);
 
 
-    
+
     const steps = getSteps();
 
 
@@ -58,7 +58,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                 ))}
             </Stepper>
             {
-                getStepContent(activeStep, setActiveStep)
+                getStepContent(activeStep)
             }
         </div>
     );
