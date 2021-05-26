@@ -23,17 +23,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-    return ['Select master blaster campaign settings', 'Create an ad group', 'Create an ad'];
+    return ['Add Address', 'Add Payment', 'Review'];
 }
 
-function getStepContent(stepIndex, setStep) {
+function getStepContent(stepIndex, setStep, setFormValues, formValues) {
     switch (stepIndex) {
         case 0:
-            return <Address submit={setStep} />;
+            return <Address submit={setStep} preValues={formValues} setFormValues={setFormValues} />;
         case 1:
-            return <Payment submit={setStep} />;
+            return <Payment submit={setStep} preValues={formValues} setFormValues={setFormValues} />;
         case 2:
-            return <Review submit={setStep} />;
+            return <Review submit={setStep} values={formValues} />;
         default:
             return 'Unknown stepIndex';
     }
@@ -42,7 +42,7 @@ function getStepContent(stepIndex, setStep) {
 export default function HorizontalLabelPositionBelowStepper() {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
-
+    const [formValues, setFormValues] = React.useState({})
 
 
     const steps = getSteps();
@@ -58,7 +58,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                 ))}
             </Stepper>
             {
-                getStepContent(activeStep, setActiveStep)
+                getStepContent(activeStep, setActiveStep, setFormValues, formValues)
             }
         </div>
     );

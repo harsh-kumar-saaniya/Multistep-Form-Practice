@@ -2,38 +2,15 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-export const Review = ({ submit }) => {
+export const Review = ({ values }) => {
     return (
-        <Formik
-            initialValues={{ firstName: '', lastName: '', email: '' }}
-            validationSchema={Yup.object({
-                firstName: Yup.string()
-                    .max(15, 'Must be 15 characters or less')
-                    .required('Required'),
-                lastName: Yup.string()
-                    .max(20, 'Must be 20 characters or less')
-                    .required('Required'),
-                email: Yup.string().email('Invalid email address').required('Required'),
-            })}
-            onSubmit={(values, { setSubmitting }) => {
-                submit(1)
-            }}
-        >
-            <Form>
-                <label htmlFor="firstName">First Name</label>
-                <Field name="firstName" type="text" />
-                <ErrorMessage name="firstName" />
-
-                <label htmlFor="lastName">Last Name</label>
-                <Field name="lastName" type="text" />
-                <ErrorMessage name="lastName" />
-
-                <label htmlFor="email">Email Address</label>
-                <Field name="email" type="email" />
-                <ErrorMessage name="email" />
-
-                <button type="submit">Back</button>
-            </Form>
-        </Formik>
+        <div>
+            <p>Area: {values.area}</p>
+            <p>City: {values.city}</p>
+            <p>Card Name: {values.cardName}</p>
+            <p>Card Number: {values.cardNumber}</p>
+            <p>Email: {values.email}</p>
+            <p>$total: 20$</p>
+        </div>
     );
 };

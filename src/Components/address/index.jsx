@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-export const Address = ({ submit }) => {
+export const Address = ({ submit, setFormValues, preValues }) => {
     return (
         <Formik
             initialValues={{ area: '', city: '', email: '' }}
@@ -18,6 +18,7 @@ export const Address = ({ submit }) => {
             })}
             onSubmit={(values) => {
                 submit(1)
+                setFormValues({ ...values, ...preValues })
             }}
 
         >
