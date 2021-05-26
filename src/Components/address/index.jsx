@@ -18,7 +18,7 @@ export const Address = ({ submit, setFormValues, preValues }) => {
             })}
             onSubmit={(values) => {
                 submit(1)
-                setFormValues({ ...values, ...preValues })
+                setFormValues({ ...values })
             }}
 
         >
